@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('teams', function (Blueprint $table) {
             $table->id();
+            $table->string('name', 100);
+            $table->string('logo', 255)->nullable();
+            $table->string('city', 100)->nullable();
             $table->timestamps();
         });
     }
@@ -23,5 +26,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('teams');
+        Schema::dropIfExists('password_reset_tokens');
+        Schema::dropIfExists('sessions');
     }
 };

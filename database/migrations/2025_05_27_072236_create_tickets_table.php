@@ -13,7 +13,18 @@ return new class extends Migration
     {
         Schema::create('tickets', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('match_id');
+            $table->string('seat_number', 10);
+            $table->enum('category', ['VIP', 'Regular']);
+            $table->decimal('price', 10, 2);
+            $table->enum('status', ['available', 'booked', 'canceled'])->default('available');
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->dateTime('booked_at')->nullable();
+            $table->string('payment_method', 50)->nullable();
             $table->timestamps();
+
+            $table->foreign('match_id')->references('id')->on('matches');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
