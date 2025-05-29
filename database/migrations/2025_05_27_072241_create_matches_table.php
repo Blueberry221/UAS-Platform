@@ -13,7 +13,16 @@ return new class extends Migration
     {
         Schema::create('matches', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('home_team_id');
+            $table->unsignedBigInteger('away_team_id');
+            $table->dateTime('match_date');
+            $table->unsignedBigInteger('stadium_id');
+            $table->enum('status', ['upcoming', 'ongoing', 'completed']);
             $table->timestamps();
+
+            $table->foreign('home_team_id')->references('id')->on('teams');
+            $table->foreign('away_team_id')->references('id')->on('teams');
+            $table->foreign('stadium_id')->references('id')->on('stadiums');
         });
     }
 
