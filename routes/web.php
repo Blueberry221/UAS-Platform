@@ -37,6 +37,7 @@ Route::get('/users/{user}/edit', [UserController::class, 'edit'])->name('users.e
 Route::put('/users/{user}', [UserController::class, 'update'])->name('users.update');      // Update profil
 Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy'); // Admin hapus user
 
+<<<<<<< HEAD
 /*
 LOGIKA BISNIS:
 - MATCHES: Admin perlu CRUD lengkap untuk mengatur jadwal pertandingan
@@ -45,3 +46,5 @@ LOGIKA BISNIS:
 - TICKETS: User hanya bisa beli (create) dan lihat (read), tidak bisa edit tiket yang sudah dibeli
 - USERS: User bisa daftar dan edit profil, admin bisa kelola semua user
 */
+=======
+>>>>>>> e146a82632bcc65031863fc4d47485edba9b1cfb
